@@ -1,0 +1,10 @@
+.todos {
+  margin: 8px 16px;
+  > div {
+    padding: 16px 4px;
+    border-bottom: 1px solid #ddd;
+  }
+  > div:last-child {
+    border-bottom: none;
+  }
+}
