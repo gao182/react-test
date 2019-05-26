@@ -7,17 +7,17 @@ import Register from './components/Register/Register'
 import 'antd/dist/antd.css';
 
 class App extends React.Component {
-    render() {
-        return (
-            <Router history={history}>
-                <div>
-                    <Route exact path="/" component={Home} />
-                    <Route path="/login" component={Login} />
-                    <Route path="/register" component={Register} />
-                </div>
-            </Router>
-        )
-    }
+	render() {
+		return (
+			<Router history={history}>
+				<div>
+					<Route exact={true} path="/" component={Home} />
+					<Route path="/login" component={Login} />
+					<Route path="/register" component={Register} />
+				</div>
+			</Router>
+		)
+	}
 }
 
 export default App

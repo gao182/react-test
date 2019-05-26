@@ -1,32 +1,59 @@
 import React from 'react';
-import axios from '../../config/axios'
+import axios from '../../config/axios';
+import { connect } from 'react-redux';
+import { initTodos, updateTodo } from '../Redux/actions'
+import TodoInput from './TodoInput'
+import TodoItem from './TodoItem'
 import './Todos.scss'
 
 class Todos extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = { todos: [] }
+	get unDeletedTodos() {
+		return this.props.todos.filter(t => !t.deleted)
 	}
-	async componentDidMount() {
-		try {
-			const response = await axios.get('todos')
-			const todos = response.data.resources
-			console.log(todos)
-			this.setState({ todos: todos })
-		} catch (e) {
-			throw new Error(e)
-		}
+
+	get unCompletedTodos() {
+		return this.unDeletedTodos.filter(t => !t.completed)
+	}
+
+	get completedTodos() {
+		return this.unDeletedTodos.filter(t => t.completed)
+	}
+
+	componentDidMount() {
+		this.getTodos()
+	}
+
+	getTodos = async () => {
+		const response = await axios.get('todos')
+		const todos = response.data.resources.map(t => Object.assign({}, t, { editing: false }))
+		this.props.initTodos(todos)
 	}
 
 	render() {
 		return (
 			<div className="todos">
-				{
-						this.state.todos.map(t => <div key={t.id} > {t.description} </div>)
-				}
+				<TodoInput />
+				<div className="todolist">
+					{
+						this.unCompletedTodos.map(t => <TodoItem key={t.id} {...t} />)
+					}
+					{
+						this.completedTodos.map(t => <TodoItem key={t.id} {...t} />)
+					}
+				</div>
 			</div>
 		)
 	}
 }
 
-export default Todos
+const mapStateToProps = (state, ownProps) => ({
+	todos: state.todos,
+	...ownProps
+})
+
+const mapDispatchToProps = {
+	initTodos,
+	updateTodo
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Todos);

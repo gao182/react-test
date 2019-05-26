@@ -11,7 +11,8 @@ class Register extends React.Component {
       user: "",
       password: "",
       passwordconfirm: "",
-      error: false
+      error: false,
+      repeat: false
     }
   }
   onChange(key, value) {
@@ -37,12 +38,20 @@ class Register extends React.Component {
       })
       this.props.history.push('/')
     } catch (e) {
-      throw new Error(e)
+      if (e.response.status === 422) {
+        this.repeatAlert()
+      }
+      
+      return Promise.reject(e);
     }
   }
   errorAlert = () => {
     this.setState({ error: true })
     setTimeout(() => this.setState({ error: false }), 2000)
+  }
+  repeatAlert = () => {
+    this.setState({ repeat: true })
+    setTimeout(() => this.setState({ repeat: false }), 2000)
   }
   render() {
     return (
@@ -63,6 +72,7 @@ class Register extends React.Component {
         <Button type="primary" size="large" onClick={this.register.bind(this)}>注册</Button>
         <p>已有账号？<Link to="/login">登录</Link></p>
         {this.state.error ? <Alert message="请输入正确用户名或密码" type="error" showIcon /> : ""}
+        {this.state.repeat ? <Alert message="用户名重复，请重新输入" type="error" showIcon /> : ""}
       </div>
     )
   }

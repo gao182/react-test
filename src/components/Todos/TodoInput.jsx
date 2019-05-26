@@ -1,6 +1,8 @@
 import React from 'react';
 import { Input, Icon } from 'antd';
 import axios from '../../config/axios';
+import { connect } from 'react-redux';
+import {addTodo} from '../Redux/actions'
 import './TodoInput.scss'
 
 class TodoInput extends React.Component {
@@ -15,9 +17,10 @@ class TodoInput extends React.Component {
 			this.postTodo()
 		}
 	}
-	postTodo = async() => {
+	postTodo = async () => {
 		try {
-			await axios.post('todos', { description: this.state.description })
+			const response = await axios.post('todos', { description: this.state.description })
+			this.props.addTodo(response.data.resource)
 		} catch (e) {
 			throw new Error(e)
 		}
@@ -26,8 +29,9 @@ class TodoInput extends React.Component {
 	render() {
 		return (
 			<div className="todoInput">
-				<Input suffix={<Icon type="plus" onClick={this.postTodo.bind(this)} style={{color: 'rgba(0,0,0,.25)' }} />} 
-					placeholder="添加新任务" onChange={(e) => this.setState({ description: e.target.value })} 
+				<Input suffix={<Icon type="enter" onClick={this.postTodo.bind(this)} 
+					style={{ color: 'rgba(0,0,0,.25)' }} />}
+					placeholder="添加新任务" onChange={(e) => this.setState({ description: e.target.value })}
 					onKeyUp={this.keyenter.bind(this)} value={this.state.description}
 				/>
 			</div>
@@ -35,4 +39,11 @@ class TodoInput extends React.Component {
 	}
 }
 
-export default TodoInput;
+const mapStateToProps = (state, ownProps) => ({
+	...ownProps
+})
+
+const mapDispatchToProps = {
+	addTodo
+}
+export default connect(mapStateToProps,mapDispatchToProps)(TodoInput);

@@ -3,7 +3,6 @@ import { Button } from 'antd';
 import axios from '../../config/axios'
 import imgurl from '../../logo200.png'
 import Todos from '../Todos/Todos'
-import TodoInput from '../Todos/TodoInput'
 
 import './Home.scss'
 
@@ -14,10 +13,15 @@ class Home extends React.Component {
 			user: {}
 		}
 	}
-	async componentWillMount() {
-		const response = await axios.get('me');
-		this.setState({ user: response.data })
+	async componentWillMount(){
+		await this.getMe()
 	}
+
+	getMe = async () => {
+		const response = await axios.get('me');
+		this.setState({user: response.data})
+	}
+
 	logout() {
 		this.props.history.push('/login')
 		localStorage.setItem('x-token', '')
@@ -37,8 +41,7 @@ class Home extends React.Component {
 				</nav>
 				<main>
 					<aside>
-						<TodoInput />
-						<Todos />
+						<Todos/>
 					</aside>
 				</main>
 			</div>
