@@ -4,7 +4,7 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import App from './App';
-import todoApp from './components/Redux/combine'
+import todoApp from './Redux/combine'
 import './index.scss'
 
 let store = createStore(todoApp);

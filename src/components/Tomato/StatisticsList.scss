@@ -1,0 +1,23 @@
+%flex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-flow: wrap;
+}
+
+.statisticslist {
+  margin-top: 12px;
+  border: 1px solid #ddd;
+  .tomato-month {
+    @extend %flex;
+    margin:4px 12px;
+    .list-item > div {
+      margin-left: 20px;
+      margin-bottom: 8px;
+
+      b {
+        margin-left: 8px;
+      }
+    }
+  }
+}

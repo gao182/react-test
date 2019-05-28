@@ -4,7 +4,11 @@ body {
   font-family: sans-serif;
   font-size: 15px;
   background-color: #f6f6f6;
-
+  p,ul,li{
+    margin: 0;
+    padding: 0;
+  }
+  
   #login,
   #register {
     margin: 50px auto;

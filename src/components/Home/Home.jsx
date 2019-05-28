@@ -3,6 +3,8 @@ import { Button } from 'antd';
 import axios from '../../config/axios'
 import imgurl from '../../logo200.png'
 import Todos from '../Todos/Todos'
+import Tomato from '../Tomato/Tomato'
+import Statistics from '../Tomato/Statistics'
 
 import './Home.scss'
 
@@ -40,9 +42,13 @@ class Home extends React.Component {
 					</div>
 				</nav>
 				<main>
-					<aside>
-						<Todos/>
-					</aside>
+					<div className="content">
+						<Tomato/>
+						<aside>
+							<Todos/>
+						</aside>
+					</div>
+					<Statistics/>
 				</main>
 			</div>
 		)

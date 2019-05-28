@@ -1,16 +1,22 @@
+%flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: wrap;
+}
 .home {
   background-color: white;
+  padding-bottom: 20px;
   > nav {
+    @extend %flex;
     padding: 12px 28px;
-    display: flex;
-    justify-content: space-between;
     border-bottom: 1px solid #ddd;
     background: linear-gradient(to bottom, #fff 0, #f6f6f6 100%);
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+
     > #logo {
+      @extend %flex;
       height: 32px;
-      display: flex;
-      align-items: center;
       > img {
         height: 100%;
       }
@@ -22,8 +28,7 @@
       }
     }
     > .user {
-      display: flex;
-      align-items: center;
+      @extend %flex;
       > span {
         margin-right: 8px;
       }
@@ -36,11 +41,15 @@
     }
   }
   > main {
-    padding: 40px;
-    > aside {
-      width: 360px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
+    padding: 40px 60px;
+    > .content {
+      @extend %flex;
+      align-items: flex-start;
+      aside {
+        width: 280px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
     }
   }
 }

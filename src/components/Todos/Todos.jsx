@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from '../../config/axios';
+import { Collapse } from 'antd';
 import { connect } from 'react-redux';
-import { initTodos, updateTodo } from '../Redux/actions'
+import { initTodos, updateTodo } from '../../Redux/actions'
 import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
 import './Todos.scss'
@@ -33,14 +34,19 @@ class Todos extends React.Component {
 		return (
 			<div className="todos">
 				<TodoInput />
-				<div className="todolist">
-					{
-						this.unCompletedTodos.map(t => <TodoItem key={t.id} {...t} />)
-					}
-					{
-						this.completedTodos.map(t => <TodoItem key={t.id} {...t} />)
-					}
-				</div>
+				<Collapse accordion defaultActiveKey={['1']}>
+					<Collapse.Panel header="未完成任务" key="1">
+						
+						{
+							this.unCompletedTodos.map(t => <TodoItem key={t.id} {...t} />)
+						}
+					</Collapse.Panel>
+					<Collapse.Panel header="最近完成任务" key="2">
+						{
+							this.completedTodos.map(t => <TodoItem key={t.id} {...t} />)
+						}
+					</Collapse.Panel>
+				</Collapse>
 			</div>
 		)
 	}

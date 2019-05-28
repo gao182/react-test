@@ -2,7 +2,7 @@ import React from 'react';
 import axios from '../../config/axios';
 import { Checkbox, Icon } from 'antd';
 import { connect } from 'react-redux';
-import { editTodo, updateTodo } from '../Redux/actions'
+import { editTodo, updateTodo } from '../../Redux/actions'
 
 class TodoItem extends React.Component {
 	constructor(props) {
@@ -49,7 +49,7 @@ class TodoItem extends React.Component {
 			</div>
 		)
 		return (
-			<div className={this.props.editing? "focus":""}>
+			<div className={this.props.editing? "todoitem focus":"todoitem"}>
 				<Checkbox checked={this.props.completed}
 					onChange={e => this.updateTodo({ completed: e.target.checked })} />
 				{this.props.editing ? Edit : Text}
