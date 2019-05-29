@@ -8,15 +8,37 @@
 .statisticslist {
   margin-top: 12px;
   border: 1px solid #ddd;
-  .tomato-month {
-    @extend %flex;
-    margin:4px 12px;
-    .list-item > div {
-      margin-left: 20px;
-      margin-bottom: 8px;
+  .month-list {
+    margin: 4px 12px 12px;
+    background-color: #fafafa;
 
-      b {
-        margin-left: 8px;
+    .list-item {
+      margin-left: 24px;
+      div {
+        @extend %flex;
+        align-items: center;
+        margin: 2px 0;
+
+        b {
+          flex: 1;
+          padding: 4px;
+          margin-left: 16px;
+        }
+        &:hover{
+          background-color: #eee;
+
+          .action{
+            display: block;
+          }
+        }
+        .action{
+          display: none;
+          margin-right: 4px;
+          span{
+            padding: 0 4px;
+            cursor: pointer;
+          }
+        }
       }
     }
   }

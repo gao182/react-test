@@ -6,7 +6,7 @@ const TodayItem = function (props) {
 		<div className="TomatoItem">
             <span>{format(props.started_at,'HH:mm')} - 
                 {props.ended_at?format(props.ended_at,'HH:mm'):""}</span>
-			<b>{props.description?props.description:"创建"}</b>
+			<b>{props.description?props.description:"创建番茄,被中断"}</b>
 		</div>
 	)
 }

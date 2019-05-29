@@ -4,7 +4,7 @@
     flex-flow: wrap;
 }
 .statistics {
-  margin-top: 60px;
+  margin-top: 40px;
 
   .time {
     @extend %flex;
@@ -36,8 +36,12 @@
       padding: 12px;
       border: 1px solid #ddd;
 
-      &.foucs,&:hover{
-        background-color: #f4f4f4;
+      &:hover{
+        background-color: #fafafa;
+      }
+
+      &.foucs{
+        background-color: #fff1df;
       }
 
       > .count {
@@ -54,6 +58,11 @@
             font-size: 28px;
             line-height: 28px;
             color: #de4b4b;
+        }
+      }
+      >p{
+        span{
+          margin-right: 40px;
         }
       }
     }
