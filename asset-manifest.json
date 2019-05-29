@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/react-tomato/static/css/main.cfece337.chunk.css",
+    "main.js": "/react-tomato/static/js/main.c1a367ff.chunk.js",
+    "main.js.map": "/react-tomato/static/js/main.c1a367ff.chunk.js.map",
+    "runtime~main.js": "/react-tomato/static/js/runtime~main.3a0aa504.js",
+    "runtime~main.js.map": "/react-tomato/static/js/runtime~main.3a0aa504.js.map",
+    "static/css/2.2a88c607.chunk.css": "/react-tomato/static/css/2.2a88c607.chunk.css",
+    "static/js/2.9d1c7924.chunk.js": "/react-tomato/static/js/2.9d1c7924.chunk.js",
+    "static/js/2.9d1c7924.chunk.js.map": "/react-tomato/static/js/2.9d1c7924.chunk.js.map",
+    "index.html": "/react-tomato/index.html",
+    "precache-manifest.c30fda3ff7930fd5dcc4e59ed42a8f87.js": "/react-tomato/precache-manifest.c30fda3ff7930fd5dcc4e59ed42a8f87.js",
+    "service-worker.js": "/react-tomato/service-worker.js",
+    "static/css/2.2a88c607.chunk.css.map": "/react-tomato/static/css/2.2a88c607.chunk.css.map",
+    "static/css/main.cfece337.chunk.css.map": "/react-tomato/static/css/main.cfece337.chunk.css.map",
+    "static/media/logo200.png": "/react-tomato/static/media/logo200.9ffc74fb.png"
+  }
+}
