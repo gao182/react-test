@@ -1,6 +1,6 @@
 import React from 'react';
 import { InputNumber } from 'antd';
-import StatisticsList from '../Tomato/StatisticsList'
+import StatisticsList from './StatisticsList'
 
 import './Statistics.scss'
 

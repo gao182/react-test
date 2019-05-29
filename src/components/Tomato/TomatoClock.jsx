@@ -8,12 +8,14 @@ const confirm = Modal.confirm;
 class TomatoClock extends React.Component {
 
     compolentConfirm = () => {
-        var confirm = prompt("请输入你刚刚完成的任务", "");
+        var confirm = prompt("请输入完成的番茄（取消即放弃）", "");
         if (confirm !== null && confirm !== "") {
             this.updateTomato({
                 description: confirm,
                 ended_at: new Date()
             })
+        }else{
+            this.abortTomato()
         }
     }
 
@@ -43,6 +45,10 @@ class TomatoClock extends React.Component {
         }
     }
 
+    onFinish = () => {
+        this.forceUpdate()
+    }
+
     render() {
         let html = (<div></div>)
         if (this.props.unfinishedTomato === undefined) {
@@ -54,7 +60,7 @@ class TomatoClock extends React.Component {
             const duration = this.props.unfinishedTomato.duration
             const timeNow = new Date().getTime()
 
-            if (timeNow - startedAt > duration) {
+            if (timeNow - startedAt >= duration) {
                 html = (
                     <button className="clock-btn btn-danger" onClick={this.compolentConfirm}>
                         <span>收割番茄</span>
@@ -65,7 +71,7 @@ class TomatoClock extends React.Component {
                 html = (
                     <button className="clock-btn btn-warning" onClick={this.abortConfirm}>
                         <span>放弃</span>
-                        <Countdown timer={timer} duration={duration}/>
+                        <Countdown timer={timer} duration={duration} onFinish={this.onFinish} />
                     </button>
                 )
             }

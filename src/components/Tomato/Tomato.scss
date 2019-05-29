@@ -18,6 +18,8 @@
     border-radius: 50%;
     border: none;
     color: white;
+    outline: none;
+    cursor: pointer;
 
     &.btn-danger {
       background-color: #de4b4b;

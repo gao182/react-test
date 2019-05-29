@@ -4,7 +4,7 @@ import axios from '../../config/axios'
 import imgurl from '../../logo200.png'
 import Todos from '../Todos/Todos'
 import Tomato from '../Tomato/Tomato'
-import Statistics from '../Tomato/Statistics'
+import Statistics from '../Statistics/Statistics'
 
 import './Home.scss'
 
